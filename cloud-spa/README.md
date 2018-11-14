@@ -2,6 +2,8 @@
 
 This demo will walk you through some basic concepts on how to integrate (cloud-hosted) Flowplayer Native with your SPA framework.
 
+[demo page](https://flowplayer.github.io/advanced-demos/cloud-spa/)
+
 ## Tech
 
 1. [flowplayer](https://flowplayer.com) as our video player
