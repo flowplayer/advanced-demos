@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "cssnano": "^4.1.7",
+    "parcel": "^1.10.3"
+  },
+  "name": "demo-cloud-spa",
+  "version": "0.0.0",
+  "description": "demo on how to use cloud-hosted players in SPA setups",
+  "main": "index.html",
+  "dependencies": {
+    "mithril": "^1.1.6"
+  },
+  "scripts": {
+    "start": "npx parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/flowplayer/advanced-demos.git"
+  },
+  "author": "Benjamin Clos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flowplayer/advanced-demos/issues"
+  },
+  "homepage": "https://github.com/flowplayer/advanced-demos#readme"
+}
