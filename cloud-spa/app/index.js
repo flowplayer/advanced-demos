@@ -3,7 +3,7 @@
  *  Mithril.js : https://mithril.js.org
  *  Flowplayer : flowplayer.com
  */
-
+import m       from "mithril"
 import App     from "./app"
 import Loading from "./loading"
 

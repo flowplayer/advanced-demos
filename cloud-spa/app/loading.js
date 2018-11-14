@@ -1,3 +1,4 @@
+import m from "mithril"
 /**
  * simple loading animation for while the async assets are loaded
  */

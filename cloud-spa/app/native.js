@@ -1,3 +1,5 @@
+import m from "mithril"
+
 export default 
   { view           : _     => m("div")
   , oncreate       : vnode => {
