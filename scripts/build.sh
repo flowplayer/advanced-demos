@@ -1,0 +1,1 @@
+parcel build --no-minify -d docs/cloud-spa cloud-spa/index.html
