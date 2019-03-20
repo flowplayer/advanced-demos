@@ -8,7 +8,9 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sass": "^1.17.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html"
