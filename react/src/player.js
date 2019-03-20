@@ -1,5 +1,4 @@
 import React    from "react"
-import ReactDOM from "react-dom"
 
 export class Player extends React.Component {
   constructor (props) {
@@ -7,7 +6,6 @@ export class Player extends React.Component {
   }
 
   componentDidMount () {  
-    console.log(this)
     // create it and expose it
     this.player = flowplayer(this.refs.container, this.props)
   }
