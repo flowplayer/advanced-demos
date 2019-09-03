@@ -1,4 +1,4 @@
-import * as MuninEvents from "./events"
+import Munin from "./munin"
 
 export default function munin_analytics (opts, root, video) {
   // we should always avoid Maybe types when possible
@@ -41,7 +41,7 @@ export default function munin_analytics (opts, root, video) {
     munin.destroy()
   })
   // listen to our own events from when we 
-  video.on([MuninEvents.MUNIN_ERROR, MuninEvents.MUNIN_OK], e => {
+  video.on([Munin.events.ERR, Munin.events.OK], e => {
     config.debug && console.error("Event(kind: %s, data: %o)", e.type, e.data)
   })
 }
