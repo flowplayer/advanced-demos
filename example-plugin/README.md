@@ -13,8 +13,8 @@ function custom_plugin (opts, root, video) {}
 ```
 
 for those of your that read TypeScript-style type notations, we can say:
-```
-inferface Plugin {
+```typescript
+interface Plugin {
   (opts: Record<string, any>, root : HTMLDivElement, video: HTMLVideoElement): void;
 }
 ```
@@ -60,6 +60,14 @@ function custom_plugin (opts, root, video) {
   }
 }
 ```
+
+## Unsafe References
+
+Quite often it is useful to cache DOM lookups and maintain unsafe references, however the next logical question is then how to know when to free those references since in SPAs they can accrue and crash a browser tab over a long-lived session.
+
+For this we have the `REAP` event, which plugins can listen to to know that it is now safe to prune those references.
+
+These is a detailed example in the codebase here.
 
 ## Configuration Is Reactive
 
