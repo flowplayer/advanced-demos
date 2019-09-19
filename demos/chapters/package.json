@@ -3,7 +3,7 @@
     "cssnano": "^4.1.7",
     "parcel": "^1.10.3"
   },
-  "name": "demo-cloud-spa",
+  "name": "demo-chapters",
   "version": "0.0.0",
   "description": "demo on how to use cloud-hosted players in SPA setups",
   "main": "index.html",
