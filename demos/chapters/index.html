@@ -4,10 +4,16 @@
     <link 
       rel="stylesheet" 
       href="//cdn.flowplayer.com/releases/native/stable/style/flowplayer.css">
+    <link 
+      rel="stylesheet" 
+      href="./src/app.css">
   </head>
   <body>
     <div id="wrapper">
-      <div id="app"></div>
+      <div id="app">
+        <div id="player"></div>
+        <div id="chapters"></div>
+      </div>
     </div>
     <!-- the core player and UI -->
     <script 
@@ -15,9 +21,10 @@
     <!-- add support for .m3u8 sources -->
     <script 
       src="//cdn.flowplayer.com/releases/native/stable/plugins/hls.min.js"></script>
-    <!-- if we want to be able to fetch assets from the OVP -->
     <script 
-      src="//cdn.flowplayer.com/releases/native/stable/plugins/ovp.min.js"></script>
+      src="//cdn.flowplayer.com/releases/native/stable/plugins/cuepoints.min.js"></script>
+    <script 
+      src="//cdn.flowplayer.com/releases/native/stable/plugins/qsel.min.js"></script>
     <script 
       src="./src/app.js"></script>
   </body>
