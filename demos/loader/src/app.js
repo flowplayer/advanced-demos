@@ -8,5 +8,6 @@ const my_ovp_src =
   }
 
 flowplayer("#player", 
-  { src: [my_ovp_src]
+  { src   : [my_ovp_src]
+  , token : process.env.TOKEN
   })

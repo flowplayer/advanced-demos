@@ -1,4 +1,4 @@
-# Writing A Customer Source Loader Plugin
+# Writing A Custom Source Loader Plugin
 
 [demo page](https://flowplayer.github.io/advanced-demos/loader/)
 
