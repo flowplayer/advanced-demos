@@ -17,4 +17,10 @@ const chapter = (idx) => {
 const minutes = 
   n => n * 60
 
-export default Array.from({length: 11}, (_, idx)=> chapter(idx))
+export const All = 
+  Array.from({length: 11}, (_, idx)=> chapter(idx))
+
+export const ById = All.reduce((lookup, chapter)=> Object.assign(lookup, 
+  {[chapter.id]: chapter}))
+
+export const find_by_hash = hash => ById[hash.slice(1)]
