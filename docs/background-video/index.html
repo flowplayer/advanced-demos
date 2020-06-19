@@ -1,0 +1,108 @@
+<link rel="stylesheet" href="https://cdn.flowplayer.com/releases/native/stable/style/flowplayer.css">
+<!-- 
+  smallest possible player build with no 
+  UI components which is ideal for background videos
+-->
+<script src="https://cdn.flowplayer.com/releases/native/stable/core/flowplayer.min.js"></script>
+<!--
+  hls so that we can control the initial 
+  load quality of the background video
+-->
+<script src="https://cdn.flowplayer.com/releases/native/stable/plugins/hls.min.js"></script>
+<!--
+  if you want to use OVP media ids as sources 
+  you should also include the OVP loader plugin
+-->
+<script src="https://cdn.flowplayer.com/releases/native/stable/plugins/ovp.min.js"></script>
+
+<style>/* some style for the demo so it looks purdy */
+  body {margin: 0} /* reset */
+  header, article, .hero {position: relative;}
+  header { height: 3em; }
+  nav {
+    display: flex;
+    flex-direction: row;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0.5em 2em;
+    line-height: 1.5em;
+  }
+
+  article {
+    width: 960px;
+    margin: 0 auto;
+    padding-top: 1em;
+  }
+
+  .hero {
+    overflow: hidden;  
+    z-index: -1;
+    margin-top: -6em;
+    height: auto;
+    width: 100%;
+    min-height: 100%;
+  }
+
+  .hero h1, .hero h2 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+    position: relative;
+  }
+
+  .hero h1 {
+    margin-top: 6em;
+    font-size: 3.1em;
+    text-decoration: underline;
+  }
+
+  .hero h2 {
+    margin-top: 2em;
+    font-size: 2em;
+  }
+
+  .flowplayer {
+    position: absolute;
+    width:100%;
+    bottom: 0;
+    left: 0;
+  }
+
+  p {
+    font-size: 1em;
+  }</style>
+
+<header>
+  <nav>
+    <a href="#">home</a>
+    <a href="#">about</a>
+    <a href="#">mission</a>
+  </nav>
+</header>
+<div class="hero">
+  <player></player>
+  <h1>Hello Hero</h1>
+  <h2>have you ever wanted to make the perfect background video?</h2>
+</div>
+<article>
+  <p>
+    Well if you checkout the source of this demo you can see how to make a high-quality, responsive, background video.
+  </p>
+  <p>
+    It's simple with <a href="https://flowplayer.com">Flowplayer</a>, why not give it a try today?
+  </p>
+</article>
+<script>flowplayer("player", {
+  src: "eedf1500-78f9-4249-977a-974445a09db3",
+  autoplay: true,
+  loop: true,
+  poster: "https://source.unsplash.com/random?" + Math.random().toString() // random poster as a fallback
+  ,
+  hls: {
+    startLevel: 3
+  }
+});</script>

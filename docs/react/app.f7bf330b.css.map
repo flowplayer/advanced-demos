@@ -1,0 +1,1 @@
+{"version":3,"sources":["src/styles/app.sass"],"names":[],"mappings":"AAAA;EACE;EACA","file":"app.f7bf330b.css","sourceRoot":"../../demos/react","sourcesContent":["#wrapper\n  max-width: 960px\n  margin: 0 auto"]}
