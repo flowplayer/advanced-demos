@@ -5,8 +5,6 @@
 //
 // anything defined in a previous bundle is accessed via the
 // orig method which is the require for previous bundles
-
-// eslint-disable-next-line no-global-assign
 parcelRequire = (function (modules, cache, entry, globalName) {
   // Save the require from previous bundle to this closure if any
   var previousRequire = typeof parcelRequire === 'function' && parcelRequire;
@@ -77,8 +75,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
     }, {}];
   };
 
+  var error;
   for (var i = 0; i < entry.length; i++) {
-    newRequire(entry[i]);
+    try {
+      newRequire(entry[i]);
+    } catch (e) {
+      // Save first error but execute all entries
+      if (!error) {
+        error = e;
+      }
+    }
   }
 
   if (entry.length) {
@@ -103,6 +109,13 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   // Override the current require with this new one
+  parcelRequire = newRequire;
+
+  if (error) {
+    // throw error from earlier, _after updating parcelRequire_
+    throw error;
+  }
+
   return newRequire;
 })({"Rlkg":[function(require,module,exports) {
 var global = arguments[3];
@@ -1372,16 +1385,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   src: "https://edge.flowplayer.org/starwreck/hls/playlist.m3u8",
-  ratio: "21:9"
+  ratio: "21:9",
+  token: "eyJraWQiOiJMaDBuRm02UGxMbEkiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjIjoie1wiYWNsXCI6NixcImlkXCI6XCJMaDBuRm02UGxMbElcIn0iLCJpc3MiOiJGbG93cGxheWVyIn0.JnTSd2fXkJaBtM5ruW7wrhBmgSDYYF2biyNcnEx33D_7SX2cP6Gbf4iZDkZn2K_NqLjltLB2McNvINhvMw83eg"
 };
 exports.default = _default;
-},{}],"zV+j":[function(require,module,exports) {
+},{}],"zVJz":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = void 0;
+exports.find_by_hash = exports.ById = exports.All = void 0;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var chapter = function chapter(idx) {
   var startTime = minutes(10) * idx; // must be finite number
@@ -1402,13 +1418,22 @@ var minutes = function minutes(n) {
   return n * 60;
 };
 
-var _default = Array.from({
+var All = Array.from({
   length: 11
 }, function (_, idx) {
   return chapter(idx);
 });
+exports.All = All;
+var ById = All.reduce(function (lookup, chapter) {
+  return Object.assign(lookup, _defineProperty({}, chapter.id, chapter));
+});
+exports.ById = ById;
 
-exports.default = _default;
+var find_by_hash = function find_by_hash(hash) {
+  return ById[hash.slice(1)];
+};
+
+exports.find_by_hash = find_by_hash;
 },{}],"vZyd":[function(require,module,exports) {
 "use strict";
 
@@ -1416,11 +1441,17 @@ var _mithril = _interopRequireDefault(require("mithril"));
 
 var _video = _interopRequireDefault(require("./mocks/video"));
 
-var _chapters = _interopRequireDefault(require("./mocks/chapters"));
+var Chapters = _interopRequireWildcard(require("./mocks/chapters"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -1428,9 +1459,9 @@ var None = {};
 var State = {
   active_chapter: None
 };
-var player = flowplayer("#player", _objectSpread({}, _video.default, {
+var player = flowplayer("#player", _objectSpread(_objectSpread({}, _video.default), {}, {
   preload: "metadata",
-  cuepoints: _chapters.default
+  cuepoints: Chapters.All
 }));
 player.on(flowplayer.events.CUEPOINT_START, function (e) {
   State.active_chapter = e.data.cuepoint;
@@ -1444,24 +1475,31 @@ var seek_to_chapter = function seek_to_chapter(chapter) {
   if (player.readyState < 1) return player.setOpts({
     start_time: chapter.startTime
   });
-  console.log("startTime", chapter.startTime);
   player.currentTime = chapter.startTime;
 };
 
-var ChapterState = function ChapterState(chapter) {
+var on_navigation = function on_navigation(chapter) {
+  history.pushState(chapter, chapter.title, "#" + chapter.id);
+  document.title = chapter.title;
+  seek_to_chapter(chapter);
+  return false;
+};
+
+var ChapterNavigation = function ChapterNavigation(chapter) {
   return {
-    onclick: seek_to_chapter.bind(0, chapter),
+    href: chapter.id,
+    onclick: on_navigation.bind(0, chapter),
     class: State.active_chapter.id == chapter.id ? "active" : "",
     id: chapter.id
   };
 };
 
 var Chapter = function Chapter(chapter) {
-  return (0, _mithril.default)("li", ChapterState(chapter), [(0, _mithril.default)("span.title", chapter.title), (0, _mithril.default)("span.description", chapter.description)]);
+  return (0, _mithril.default)("li", (0, _mithril.default)("a", ChapterNavigation(chapter), [(0, _mithril.default)("span.title", chapter.title), (0, _mithril.default)("span.description", chapter.description)]));
 };
 
 var ChapterList = function ChapterList() {
-  return (0, _mithril.default)("ol", _chapters.default.map(Chapter));
+  return (0, _mithril.default)("ol", Chapters.All.map(Chapter));
 };
 
 _mithril.default.mount(document.getElementById("chapters"), {
@@ -1470,7 +1508,18 @@ _mithril.default.mount(document.getElementById("chapters"), {
 
 window.App = {
   State: State,
-  player: player
-};
-},{"mithril":"Rlkg","./mocks/video":"yApQ","./mocks/chapters":"zV+j"}]},{},["vZyd"], null)
-//# sourceMappingURL=app.b047b959.map
+  player: player,
+  Chapters: Chapters
+}; // add support for History
+
+window.addEventListener("popstate", function (e) {
+  return seek_to_chapter(e.state);
+}); // add support for deep links
+
+if (document.location.hash) {
+  var chapter = Chapters.find_by_hash(document.location.hash);
+  console.log("deep_link(%o)", chapter);
+  seek_to_chapter(chapter);
+}
+},{"mithril":"Rlkg","./mocks/video":"yApQ","./mocks/chapters":"zVJz"}]},{},["vZyd"], null)
+//# sourceMappingURL=app.dcdee3ba.js.map
