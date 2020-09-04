@@ -8,7 +8,7 @@
   "description": "demo on how to use cloud-hosted players in SPA setups",
   "main": "index.html",
   "dependencies": {
-    "mithril": "^1.1.6"
+    "mithril": "^1.1.7"
   },
   "scripts": {
     "start": "npx parcel index.html"
