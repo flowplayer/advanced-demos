@@ -68,13 +68,26 @@
         </div>
 
         <script src="//cdn.flowplayer.com/releases/native/stable/flowplayer.min.js"></script>
+        <script src="//cdn.flowplayer.com/releases/native/stable/plugins/float-on-scroll.min.js"></script>
+        
         <script>
             const player1 = flowplayer("#player1", {
-                src: "//edge.flowplayer.org/playful.mp4"
+                src: "//edge.flowplayer.org/playful.mp4",
+                float_on_scroll: true,
             })
 
             const player2 = flowplayer("#player2", {
-                src: "//edge.flowplayer.org/functional.mp4"
+                src: "//edge.flowplayer.org/functional.mp4",
+                autoplay: true,
+                autopause:true
+            }) 
+        </script>
+
+        <script>
+            player2.on('beforeplay', function (event) {
+                if (player1.hasState('is-popped-out')) {
+                    event.preventDefault()
+                }
             })
         </script>
     </body>
