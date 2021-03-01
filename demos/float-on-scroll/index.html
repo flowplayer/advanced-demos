@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Float on scroll API</title>
+
+        <!-- Google Fonts for demo -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+        <!-- CSS Reset for demo -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+
+        <!-- Milligram CSS for demo -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+
+        <!-- Flowplayer CSS -->
+        <link rel="stylesheet" href="https://cdn.flowplayer.com/releases/native/stable/style/flowplayer.css">
+
+        <style>
+            .container {
+                max-width: 85rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Float on scroll & API integration</h1>
+            <blockquote>
+                This demo demonstrates how to integrate with the API to find out if there is a floating player on the page or not.
+            </blockquote>
+
+            <blockquote>
+                The first player will stay floating if it's started before scrolling down the page. The second one will start autoplaying when in viewport only if the first player is not floating. 
+            </blockquote>
+
+            <div id="player1"></div>
+            
+            <p>
+                Lucas ipsum dolor sit amet organa skywalker moff jango mon tusken raider anakin c-3po utapau solo. Skywalker maul ben windu solo gamorrean. Mandalore obi-wan tusken raider hoth kit solo antilles watto. Skywalker lando maul fisto antilles kenobi. Skywalker tatooine qui-gon skywalker gonk. Maul utapau mace anakin. Sith cade jabba yoda naboo. Mustafar ben bespin anakin. Mandalore palpatine sebulba moff zabrak ewok. Watto gonk moff amidala. Dantooine luke calamari mon kessel. Windu baba moff gamorrean qui-gonn c-3p0.
+            </p>
+            <p>
+                Mace leia mon darth amidala vader kit. Sith boba moff jawa yoda anakin c-3p0 tatooine. Baba secura darth jabba mace sidious. Darth darth calrissian organa lando darth mustafar organa yavin. Binks moff wedge secura yoda palpatine dantooine ackbar ben. Kenobi skywalker mara kessel. Biggs yoda solo mon dantooine luke owen kenobi. Fett skywalker han solo ben fett hutt. Dooku watto kamino ackbar. Mon wedge padmé greedo darth tatooine tatooine hutt. Alderaan palpatine bespin sebulba. Organa lando moff coruscant r2-d2 mace fett calamari.
+            </p>
+            <p>
+                Jabba hutt binks kashyyyk. Obi-wan dooku jabba yoda skywalker droid yavin wookiee calrissian. Jinn moff solo bespin dooku. Jabba hutt sidious darth r2-d2 c-3po. Bespin secura ahsoka han binks obi-wan. Dantooine hutt moff palpatine fisto owen wedge. Fett antilles jinn hutt moff maul darth. Antilles amidala sidious skywalker han bothan ackbar lando. Biggs wedge mandalore dagobah moff jar. Darth moff organa solo maul. Leia jar darth darth solo ewok. Dantooine fett darth calamari r2-d2 sidious maul.
+            </p>
+            <p>
+                Wampa greedo padmé yoda hutt. Ackbar yoda twi'lek solo c-3po. Watto solo qui-gonn calamari. Endor organa lando mace windu tatooine darth. Antilles boba luuke palpatine tusken raider jade chewbacca vader. Zabrak moff ben solo. C-3p0 kessel skywalker dagobah mace lando baba darth. Lobot dantooine hutt kenobi mothma bothan. Hutt hutt darth grievous solo skywalker. Mace greedo ackbar dantooine skywalker dagobah gonk. Organa moff aayla c-3po kenobi darth. Thrawn tusken raider ben owen maul kenobi luke.
+            </p>
+            <p>
+                Baba qui-gon skywalker padmé sidious dantooine mon yoda. Dooku moff han twi'lek jango luke jinn. Sidious dantooine darth hoth darth. Hutt aayla padmé dagobah sidious fett. Fett kessel skywalker lars ackbar darth padmé hutt aayla. Darth mon calrissian sidious dagobah. Mandalore ben calrissian dooku darth amidala r2-d2 mon skywalker. Palpatine vader lobot sidious leia darth calamari jar endor. Alderaan jango wookiee jinn r2-d2. Organa vader darth hutt lars skywalker kit watto. Aayla antilles fett coruscant dagobah leia kessel r2-d2. 
+            </p>
+            <p>
+                Lucas ipsum dolor sit amet organa skywalker moff jango mon tusken raider anakin c-3po utapau solo. Skywalker maul ben windu solo gamorrean. Mandalore obi-wan tusken raider hoth kit solo antilles watto. Skywalker lando maul fisto antilles kenobi. Skywalker tatooine qui-gon skywalker gonk. Maul utapau mace anakin. Sith cade jabba yoda naboo. Mustafar ben bespin anakin. Mandalore palpatine sebulba moff zabrak ewok. Watto gonk moff amidala. Dantooine luke calamari mon kessel. Windu baba moff gamorrean qui-gonn c-3p0.
+            </p>
+            <p>
+                Mace leia mon darth amidala vader kit. Sith boba moff jawa yoda anakin c-3p0 tatooine. Baba secura darth jabba mace sidious. Darth darth calrissian organa lando darth mustafar organa yavin. Binks moff wedge secura yoda palpatine dantooine ackbar ben. Kenobi skywalker mara kessel. Biggs yoda solo mon dantooine luke owen kenobi. Fett skywalker han solo ben fett hutt. Dooku watto kamino ackbar. Mon wedge padmé greedo darth tatooine tatooine hutt. Alderaan palpatine bespin sebulba. Organa lando moff coruscant r2-d2 mace fett calamari.
+            </p>
+            <p>
+                Jabba hutt binks kashyyyk. Obi-wan dooku jabba yoda skywalker droid yavin wookiee calrissian. Jinn moff solo bespin dooku. Jabba hutt sidious darth r2-d2 c-3po. Bespin secura ahsoka han binks obi-wan. Dantooine hutt moff palpatine fisto owen wedge. Fett antilles jinn hutt moff maul darth. Antilles amidala sidious skywalker han bothan ackbar lando. Biggs wedge mandalore dagobah moff jar. Darth moff organa solo maul. Leia jar darth darth solo ewok. Dantooine fett darth calamari r2-d2 sidious maul.
+            </p>
+            <div id="player2"></div>
+            <p>
+                Wampa greedo padmé yoda hutt. Ackbar yoda twi'lek solo c-3po. Watto solo qui-gonn calamari. Endor organa lando mace windu tatooine darth. Antilles boba luuke palpatine tusken raider jade chewbacca vader. Zabrak moff ben solo. C-3p0 kessel skywalker dagobah mace lando baba darth. Lobot dantooine hutt kenobi mothma bothan. Hutt hutt darth grievous solo skywalker. Mace greedo ackbar dantooine skywalker dagobah gonk. Organa moff aayla c-3po kenobi darth. Thrawn tusken raider ben owen maul kenobi luke.
+            </p>
+            <p>
+                Baba qui-gon skywalker padmé sidious dantooine mon yoda. Dooku moff han twi'lek jango luke jinn. Sidious dantooine darth hoth darth. Hutt aayla padmé dagobah sidious fett. Fett kessel skywalker lars ackbar darth padmé hutt aayla. Darth mon calrissian sidious dagobah. Mandalore ben calrissian dooku darth amidala r2-d2 mon skywalker. Palpatine vader lobot sidious leia darth calamari jar endor. Alderaan jango wookiee jinn r2-d2. Organa vader darth hutt lars skywalker kit watto. Aayla antilles fett coruscant dagobah leia kessel r2-d2. 
+            </p>
+        </div>
+
+        <script src="//cdn.flowplayer.com/releases/native/stable/flowplayer.min.js"></script>
+        <script src="//cdn.flowplayer.com/releases/native/stable/plugins/float-on-scroll.min.js"></script>
+        
+        <script>
+            const player1 = flowplayer("#player1", {
+                src: "//edge.flowplayer.org/playful.mp4",
+                float_on_scroll: true,
+            })
+
+            const player2 = flowplayer("#player2", {
+                src: "//edge.flowplayer.org/functional.mp4",
+                autoplay: true,
+                autopause:true
+            }) 
+        </script>
+
+        <script>
+            player2.on('beforeplay', function (event) {
+                if (player1.hasState('is-popped-out')) {
+                    event.preventDefault()
+                }
+            })
+        </script>
+    </body>
+</html>
