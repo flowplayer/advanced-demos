@@ -1,0 +1,20 @@
+{
+  "name": "react-example",
+  "version": "1.1.1",
+  "description": "simple example on how to integrate flowplayer with a React app",
+  "main": "index.js",
+  "dependencies": {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "devDependencies": {
+    "sass": "^1.17.3",
+    "parcel-bundler": "^1.12.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel index.html"
+  },
+  "author": "Mehdi Rashadatjou",
+  "license": "ISC"
+}
